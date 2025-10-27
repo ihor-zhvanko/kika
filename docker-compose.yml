@@ -1,3 +1,4 @@
+name: hkr
 services:
   job-queue:
     image: hkr/job-queue:latest
@@ -74,6 +75,7 @@ services:
       JOB_QUEUE_NAME: import-queue
       JOB_QUEUE_CONNECTION: redis://:1234@job-queue:6379
       MAIN_DB_CONNECTION: postgresql://postgres:1234@central-db/main
+      KREBS_DB_CONNECTION: postgresql://postgres:1234@central-db/krebs
   krebs-web:
     image: hkr/krebs-web:latest
     pull_policy: never
