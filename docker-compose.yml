@@ -1,5 +1,18 @@
 name: hkr
 services:
+  krebs-code:
+    image: hkr/krebs-code:latest
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://0.0.0.0:8080/healthz"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    container_name: krebs-code
+    ports:
+      - "8091:8080"
+    networks:
+      - krebs-net
+    restart: unless-stopped
   job-queue:
     image: hkr/job-queue:latest
     pull_policy: never
@@ -43,8 +56,6 @@ services:
       - krebs-net
     volumes:
       - krebs-db:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 1234
@@ -91,7 +102,7 @@ services:
     networks:
       - krebs-net
     ports:
-      - "8080:80"
+      - "8090:80"
     depends_on:
       - krebs-api
       - krebs-web
