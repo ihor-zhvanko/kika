@@ -66,7 +66,7 @@ sh clear-all.sh
 ## ✅ Next Steps
 
 - Verify services are running with `docker ps`.
-- Access the system via the configured ingress (default port `8082`).
+- Access the system via the configured ingress (default port `8090`).
 - Review logs with `docker logs <container_name>` if troubleshooting is needed.
 
 ## 🌐 Accessing the Website
@@ -74,5 +74,5 @@ sh clear-all.sh
 Once the stack is running, the website will be available at:
 
 ```
-http://<IP ADDRESS OF LINUX SERVER or LOCALHOST>:8082
+http://<IP ADDRESS OF LINUX SERVER or LOCALHOST>:8090
 ```
